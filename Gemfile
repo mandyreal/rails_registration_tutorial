@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem 'shoulda'
+  gem 'shoulda', '~> 3.5'
   gem 'faker'
   gem 'factory_girl_rails'
 end
