@@ -18,4 +18,12 @@ class UserTest < ActiveSupport::TestCase
    
     assert_includes(@subject.errors[:email], "has already been taken")
   end
+  
+  test "user should be authentic able" do
+    user = create(:user, password: "password")
+ 
+    assert_not(user.authenticate("qwerty"))
+ 
+    assert(user.authenticate("password"))
+  end
 end
