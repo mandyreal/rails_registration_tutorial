@@ -10,10 +10,12 @@ class UserTest < ActiveSupport::TestCase
 
   should validate_presence_of(:email)
   
-  test "email should be a valid email address" do 
-    @subject.email = "invalid"
+  test "email should be unique" do
+    create(:user, email: "email@domain.com")
+   
+    @subject.email = "email@domain.com"
     @subject.valid?
-    
-    assert_includes(@subject.errors[:email], "it is not an email")
+   
+    assert_includes(@subject.errors[:email], "has already been taken")
   end
 end
