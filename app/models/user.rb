@@ -4,10 +4,10 @@ class User < ApplicationRecord
     validates :email, presence: true, email: true, uniqueness: true
     
     def confirm!
-        update!(confirmed_at: DateTime.now)
+      update!(confirmed_at: DateTime.now)
     end
     
     def confirmed?
-        !! confirmed_at
+      !! confirmed_at
     end
 end
