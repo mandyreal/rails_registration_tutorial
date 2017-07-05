@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  should have_many(:assignments)
+  should have_many(:roles).through(:assignments)
   # test "the truth" do
   #   assert true
   # end
@@ -36,4 +38,13 @@ class UserTest < ActiveSupport::TestCase
  
     assert(user.confirmed?)
   end
+
+  test "user should have role" do
+    assert_not(@subject.role? :admin)
+  
+    @subject.roles << Role.new(name: "admin")
+  
+    assert(@subject.role? :admin)
+  end
+
 end
